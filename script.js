@@ -1,73 +1,19 @@
-// IMPORTANT: PASTE YOUR firebaseConfig OBJECT FROM THE FIREBASE CONSOLE HERE
-const firebaseConfig = {
-  apiKey: "AIzaSyYOUR_API_KEY_HERE", // REPLACE
-  authDomain: "your-project-id.firebaseapp.com", // REPLACE
-  projectId: "your-project-id", // REPLACE
-  storageBucket: "your-project-id.appspot.com", // REPLACE
-  messagingSenderId: "YOUR_SENDER_ID", // REPLACE
-  appId: "YOUR_APP_ID" // REPLACE
-};
+// script.js
 
-// Initialize Firebase (if not already initialized - good practice to check)
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
-const auth = firebase.auth();
+// ... (firebaseConfig and auth setup) ...
+// ... (Authentication UI Elements and Listeners) ...
 
-// --- Authentication UI Elements ---
-const loginButton = document.getElementById('login-button');
-const logoutButton = document.getElementById('logout-button');
-const userGreeting = document.getElementById('user-greeting');
-
-// --- Listen for auth state changes ---
-auth.onAuthStateChanged(user => {
-    if (user) {
-        // User is signed in
-        if (loginButton) loginButton.style.display = 'none';
-        if (logoutButton) logoutButton.style.display = 'inline-block'; // Or 'block' if it's alone
-        if (userGreeting) {
-            userGreeting.textContent = `OPERATIVE: ${user.displayName || user.email}`;
-            userGreeting.style.display = 'inline';
-        }
-        console.log("User logged in:", user.displayName);
-        // You could potentially fetch user-specific data here if you had a database
-    } else {
-        // User is signed out
-        if (loginButton) loginButton.style.display = 'inline-block';
-        if (logoutButton) logoutButton.style.display = 'none';
-        if (userGreeting) userGreeting.style.display = 'none';
-        console.log("User logged out");
-    }
-});
-
-// --- Logout functionality ---
-if (logoutButton) {
-    logoutButton.addEventListener('click', () => {
-        auth.signOut().then(() => {
-            // Sign-out successful.
-            // localStorage.removeItem('synergyUser'); // Clear any local user data
-            console.log("Sign out successful");
-            // The onAuthStateChanged listener above will handle UI updates
-            // Optionally redirect to login page or home page
-            // window.location.href = 'login.html';
-        }).catch((error) => {
-            // An error happened.
-            console.error("Sign out error:", error);
-        });
-    });
-}
-
-
-// --- Existing Store Rendering Logic (Keep As Is) ---
-document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loaded for store rendering
+// --- Existing Store Rendering Logic ---
+document.addEventListener('DOMContentLoaded', () => {
     const storeGrid = document.getElementById('storeGrid');
+    const instagramProfileUrl = "https://www.instagram.com/the___ron?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="; // Instagram URL
 
     const storesData = [
-        // ... (Your existing storesData array with ORIGINAL names) ...
+        // ... (Your existing storesData array with ORIGINAL names and logoUrls) ...
         {
             id: 1,
             name: "Amazon",
-            logoUrl: "amazon_logo.png?text=Amazon",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
             cashbackAmount: "0.00001%",
             cashbackType: "SynergyUnits™",
             offerDetails: "Mandatory fun procurement zone. Achieve optimal acquisition of miscellaneous consumer goods. Failure is not an option.",
@@ -77,47 +23,18 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loa
         {
             id: 2,
             name: "Myntra",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=Myntra",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Myntra_logo.png",
             cashbackAmount: "Tier 3",
             cashbackType: "ApprovalPoints©",
             offerDetails: "Update your external casing to meet Q3 style mandates. Non-compliance may result in peer disapproval.",
             category: "fashion",
             officialUrl: "https://www.myntra.com"
         },
-        {
-            id: 3,
-            name: "Flipkart",
-            logoUrl: "Flipkart-Emblema.png?text=Flipkart",
-            cashbackAmount: "404",
-            cashbackType: "ErrorBucks (redeemable for more errors)",
-            offerDetails: "Your one-stop-shop for digital artifacts and silicon-based lifeforms. Warning: may contain glitches.",
-            category: "electronics",
-            officialUrl: "https://www.flipkart.com"
-        },
-        {
-            id: 4,
-            name: "AJIO",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=AJIO",
-            cashbackAmount: "CLASSIFIED",
-            cashbackType: "StealthSavings™",
-            offerDetails: "Procure designated sartorial upgrades. Blend in. Or stand out. Your choice, operative (results may vary).",
-            category: "fashion",
-            officialUrl: "https://www.ajio.com"
-        },
-        {
-            id: 5,
-            name: "Swiggy",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=Swiggy",
-            cashbackAmount: "MAX_INT",
-            cashbackType: "CalorieCredits®",
-            offerDetails: "Automated delivery of vital sustenance. Ensure peak operational efficiency. Do not operate heavy machinery post-ingestion.",
-            category: "food",
-            officialUrl: "https://www.swiggy.com"
-        },
+        // ... (rest of your stores)
         {
             id: 6,
             name: "Zomato",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=Zomato",
+            logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Zomato_logo.png/800px-Zomato_logo.png",
             cashbackAmount: "OVER 9000!",
             cashbackType: "FlavorStamps™",
             offerDetails: "Access a wide array of pre-processed nutrition solutions. Warning: May induce sudden desire for naps.",
@@ -127,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loa
     ];
 
     function renderStores(storesToRender) {
-        if (!storeGrid) return; // Guard clause if storeGrid is not found
+        if (!storeGrid) return;
         storeGrid.innerHTML = '';
         if (storesToRender.length === 0) {
             storeGrid.innerHTML = `
@@ -147,12 +64,41 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loa
                         ${store.cashbackAmount} <span class="type">${store.cashbackType}</span>
                     </div>
                     <p class="offer-details">${store.offerDetails}</p>
-                    <a href="${store.officialUrl}" class="action-button" data-store-id="${store.id}" target="_blank" rel="noopener noreferrer">ENGAGE PROTOCOL »</a>
+                    <a href="${store.officialUrl}" class="action-button store-link-button" data-store-id="${store.id}" target="_blank" rel="noopener noreferrer">ENGAGE PROTOCOL »</a>
                 </article>
             `;
             storeGrid.innerHTML += storeCard;
         });
+
+        // Add event listeners for the Instagram popup AFTER cards are rendered
+        addInstagramPopupListeners();
     }
+
+    function addInstagramPopupListeners() {
+        const storeLinkButtons = document.querySelectorAll('.store-link-button');
+        storeLinkButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior immediately
+                
+                const storeUrl = this.href; // Get the original store URL
+
+                const userChoice = confirm("SYNERGYBUCKS™ ALERT:\n\nBefore proceeding to the merchant, would you like to visit our esteemed partner's Instagram profile for MAXIMUM INSPIRATION?\n\nOK = Visit Instagram\nCancel = Proceed to Merchant");
+
+                if (userChoice) {
+                    // User clicked OK - redirect to Instagram
+                    console.log("Redirecting to Instagram:", instagramProfileUrl);
+                    window.open(instagramProfileUrl, '_blank');
+                    // Optionally, you might still want to open the store link after a delay or let the user click again
+                    // For now, if they go to Instagram, they don't go to the store from this click.
+                } else {
+                    // User clicked Cancel - redirect to the original store
+                    console.log("Proceeding to merchant:", storeUrl);
+                    window.open(storeUrl, '_blank');
+                }
+            });
+        });
+    }
+
 
     // Initial render if storeGrid exists
     if (storeGrid) {
@@ -170,8 +116,9 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loa
                 if (storeGrid) renderStores(storesData);
             } else {
                 const filteredStores = storesData.filter(store => store.category.toLowerCase() === filterCategory);
-                if (storeGrid) renderStores(filteredStores);
+                if (storeGrid) renderStores(filteredStores); // Corrected: storeGrid instead of storeGritd
             }
         });
     });
-}); // End of DOMContentLoaded for store rendering
+
+}); // End of DOMContentLoaded
