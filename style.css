@@ -1,22 +1,58 @@
+/* --- Variable Definitions --- */
+:root {
+    --primary-font: 'Rajdhani', sans-serif;
+    --heading-font: 'Turret Road', cursive; /* Orbitron is also good for a techy feel */
+    --logo-font: 'Orbitron', sans-serif;
+
+    --dark-bg: #12121c; /* Deep space blue/purple */
+    --card-bg: #1a1a2e; /* Slightly lighter */
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0b0;
+
+    --accent-cyan: #00f2ea;
+    --accent-magenta: #ff007f;
+    --accent-lime: #39ff14;
+    --accent-orange: #ff8c00;
+
+    --glow-cyan: 0 0 5px var(--accent-cyan), 0 0 10px var(--accent-cyan), 0 0 15px var(--accent-cyan);
+    --glow-magenta: 0 0 5px var(--accent-magenta), 0 0 10px var(--accent-magenta), 0 0 15px var(--accent-magenta);
+}
+
+
+/* --- General Styles --- */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--primary-font);
     margin: 0;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from glows */
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
+a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+a:hover {
+    color: var(--accent-magenta);
+    text-shadow: var(--glow-magenta);
+}
+
+/* --- Header --- */
 header {
-    background-color: #007bff; /* Blue like Cashkaro */
+    background: linear-gradient(135deg, #1f1f3d, #12121c);
     color: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--accent-cyan);
+    box-shadow: 0 2px 15px rgba(0, 242, 234, 0.2);
 }
 
 header .container {
@@ -26,171 +62,259 @@ header .container {
 }
 
 .logo {
-    font-size: 1.8em;
-    font-weight: bold;
+    font-family: var(--logo-font);
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--accent-lime);
+    text-shadow: 0 0 5px var(--accent-lime), 0 0 10px var(--accent-lime);
+    animation: pulseLogo 2s infinite alternate;
+}
+
+@keyframes pulseLogo {
+    from { text-shadow: 0 0 5px var(--accent-lime), 0 0 10px var(--accent-lime); }
+    to { text-shadow: 0 0 10px var(--accent-lime), 0 0 20px var(--accent-lime), 0 0 30px var(--accent-lime); }
 }
 
 nav input[type="search"] {
-    padding: 8px 12px;
-    border-radius: 20px;
-    border: none;
-    margin-right: 20px;
-    width: 250px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid var(--accent-cyan);
+    background-color: rgba(26, 26, 46, 0.8); /* Slightly transparent */
+    color: var(--text-color);
+    margin-right: 25px;
+    width: 280px;
+    font-family: var(--primary-font);
+    transition: box-shadow 0.3s ease;
+}
+nav input[type="search"]:focus {
+    outline: none;
+    box-shadow: var(--glow-cyan);
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 15px;
+    font-family: var(--heading-font);
     font-weight: 500;
+    font-size: 1.1em;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 nav a:hover {
-    text-decoration: underline;
+    background-color: var(--accent-magenta);
+    color: white;
+    text-shadow: none;
 }
 
+/* --- Main Content --- */
 .breadcrumbs {
-    margin: 20px 0;
+    margin: 25px 0;
     font-size: 0.9em;
-    color: #555;
+    color: var(--text-muted);
+    font-family: var(--primary-font);
 }
 .breadcrumbs a {
-    color: #007bff;
-    text-decoration: none;
+    color: var(--accent-lime);
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+    font-family: var(--heading-font);
+    color: var(--accent-cyan);
+    font-size: 2.8em;
+    margin-bottom: 10px;
     text-align: center;
+    text-shadow: var(--glow-cyan);
+    letter-spacing: 1px;
+}
+.subtitle {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-family: var(--primary-font);
 }
 
 .filters {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: center;
 }
 .filter-btn {
-    padding: 8px 15px;
-    margin: 0 5px;
-    border: 1px solid #007bff;
-    background-color: white;
-    color: #007bff;
-    border-radius: 20px;
+    font-family: var(--heading-font);
+    padding: 10px 20px;
+    margin: 0 8px;
+    border: 2px solid var(--accent-magenta);
+    background-color: transparent;
+    color: var(--accent-magenta);
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 .filter-btn.active, .filter-btn:hover {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--accent-magenta);
+    color: var(--dark-bg);
+    box-shadow: var(--glow-magenta);
+    transform: translateY(-2px);
 }
 
 
+/* --- Store Grid & Cards --- */
 .store-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
 .store-card {
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 10px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 242, 234, 0.1);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden; /* Clip glow if any */
 }
 .store-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-10px) rotate(1deg) scale(1.03);
+    box-shadow: 0 0 15px var(--accent-cyan), 0 0 25px var(--accent-cyan);
 }
 
 .store-card img.logo-img {
-    max-width: 120px;
-    max-height: 60px;
-    margin: 0 auto 10px auto; /* Center the image */
+    max-width: 130px;
+    max-height: 70px;
+    margin: 0 auto 15px auto;
     object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--accent-lime)); /* Subtle glow for logos */
+    transition: transform 0.3s ease;
+}
+.store-card:hover img.logo-img {
+    transform: scale(1.1);
 }
 
 .store-card h3 {
-    font-size: 1.2em;
+    font-family: var(--heading-font);
+    font-size: 1.6em;
     margin: 10px 0;
-    color: #333;
+    color: var(--accent-lime);
+    letter-spacing: 1px;
 }
 
 .store-card .cashback-info {
-    color: #28a745; /* Green for cashback */
+    color: var(--accent-cyan);
     font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 8px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    text-shadow: var(--glow-cyan);
 }
 .store-card .cashback-info span.type {
     font-weight: normal;
-    font-size: 0.9em;
-    color: #555;
+    font-size: 0.8em;
+    color: var(--text-muted);
+    text-shadow: none;
 }
 
-
 .store-card .offer-details {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 15px;
-    min-height: 30px; /* Ensure consistent height */
-    flex-grow: 1; /* Allows this to take up space if other elements are short */
+    font-size: 0.95em;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    min-height: 40px;
+    flex-grow: 1;
 }
 
 .store-card .action-button {
     display: inline-block;
-    background-color: #ff9900; /* Orange button */
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-magenta));
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-family: var(--heading-font);
     font-weight: bold;
-    transition: background-color 0.3s;
-    margin-top: auto; /* Pushes button to the bottom if card is flex container */
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(255, 0, 127, 0.3);
+    margin-top: auto;
 }
-
 .store-card .action-button:hover {
-    background-color: #e68a00;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.5), 0 0 10px var(--accent-magenta);
 }
 
+/* --- Pagination --- */
 .pagination {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .pagination button, .pagination span {
-    padding: 8px 12px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    background-color: white;
+    font-family: var(--heading-font);
+    padding: 10px 18px;
+    margin: 0 8px;
+    border: 2px solid var(--accent-lime);
+    background-color: transparent;
+    color: var(--accent-lime);
     cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 .pagination button:hover {
-    background-color: #f0f0f0;
+    background-color: var(--accent-lime);
+    color: var(--dark-bg);
+    box-shadow: 0 0 10px var(--accent-lime);
 }
 .pagination span {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+    background-color: var(--accent-lime);
+    color: var(--dark-bg);
+    border-color: var(--accent-lime);
+    font-weight: bold;
 }
 
 
+/* --- Footer --- */
 footer {
-    background-color: #343a40;
-    color: #f8f9fa;
-    padding: 20px 0;
+    background-color: #0a0a14; /* Even darker for footer */
+    color: var(--text-muted);
+    padding: 30px 0;
     text-align: center;
     font-size: 0.9em;
-    margin-top: 30px;
+    border-top: 1px solid var(--accent-magenta);
+}
+footer p {
+    margin: 5px 0;
 }
 footer a {
-    color: #00bfff;
-    text-decoration: none;
+    color: var(--accent-cyan);
+    font-weight: 600;
 }
 footer a:hover {
-    text-decoration: underline;
+    color: var(--accent-lime);
+    text-shadow: 0 0 5px var(--accent-lime);
+}
+
+/* Responsive adjustments (basic) */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2em;
+    }
+    nav input[type="search"] {
+        width: 180px;
+        margin-right: 10px;
+    }
+    nav a {
+        margin-left: 10px;
+        font-size: 1em;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    .store-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
 }
