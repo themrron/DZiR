@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "Up to 0.001%",
             cashbackType: "Bitcoin (maybe)",
             offerDetails: "So many boxes, you'll think it's Christmas every day. Probably just socks.",
-            category: "electronics" // Matched to data-filter in HTML
+            category: "electronics",
+            officialUrl: "https://www.amazon.com" // Example official URL
         },
         {
             id: 2,
@@ -18,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "Flat π%",
             cashbackType: "Existential Rewards",
             offerDetails: "Dress like you're famous, even if only your cat notices. She's judging, btw.",
-            category: "fashion"
+            category: "fashion",
+            officialUrl: "https://www.myntra.com" // Example official URL
         },
         {
             id: 3,
@@ -27,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "Up to 42%",
             cashbackType: "Cosmic Chuckles",
             offerDetails: "Deals so good, they're almost suspicious. Is this a dream? Pinch yourself.",
-            category: "electronics"
+            category: "electronics",
+            officialUrl: "https://www.flipkart.com" // Example official URL
         },
         {
             id: 4,
@@ -36,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "Flat ₹LOL",
             cashbackType: "GiggleCash",
             offerDetails: "Be the trend, or at least try not to trip over it. We believe in you!",
-            category: "fashion"
+            category: "fashion",
+            officialUrl: "https://www.ajio.com" // Example official URL
         },
         {
             id: 5,
@@ -45,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "Up to ∞%",
             cashbackType: "Food Coma Points",
             offerDetails: "Food that makes you go 'Mmm... and also, where's my TV remote?'",
-            category: "food"
+            category: "food",
+            officialUrl: "https://www.swiggy.com" // Example official URL
         },
         {
             id: 6,
@@ -54,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "A Gazillion",
             cashbackType: "Belly Rubs",
             offerDetails: "So many choices, you'll forget what you were hungry for. Just pick one!",
-            category: "food"
+            category: "food",
+            officialUrl: "https://www.zomato.com" // Example official URL
         },
         {
             id: 7,
@@ -63,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "Error 404%",
             cashbackType: "Not Found",
             offerDetails: "Shiny things that beep and boop. May or may not improve your life.",
-            category: "electronics"
+            category: "electronics",
+            officialUrl: "https://www.bestbuy.com" // Example for a generic gadget store
         },
         {
             id: 8,
@@ -72,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cashbackAmount: "10 Jokes Off",
             cashbackType: "Laugh Tracks",
             offerDetails: "Wearable punchlines and comedic couture. Warning: May cause spontaneous giggling.",
-            category: "fashion"
+            category: "fashion",
+            officialUrl: "https://www.asos.com" // Example for a generic fashion store
         }
     ];
 
@@ -98,21 +106,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <p class="offer-details">${store.offerDetails}</p>
                     </div>
-                    <a href="#" class="action-button" data-store-id="${store.id}">Grab the Giggle & Get Paid!</a>
+                    <a href="${store.officialUrl}" class="action-button" data-store-id="${store.id}" target="_blank" rel="noopener noreferrer">Grab the Giggle & Get Paid!</a>
                 </article>
             `;
+            // Note: We added target="_blank" and rel="noopener noreferrer" to the <a> tag directly.
+            // The JS event listener for alert can be removed or modified if needed for other tracking.
             storeGrid.innerHTML += storeCard;
         });
 
+        // Optional: If you still want to do something BEFORE redirecting (like logging)
+        // you can keep the event listener, but ensure it doesn't preventDefault() if
+        // the link itself is handling the redirect. For simplicity, direct link is fine.
+        // If you keep the listener, it might look like this:
+
+        /*
         document.querySelectorAll('.action-button').forEach(button => {
             button.addEventListener('click', (event) => {
-                event.preventDefault();
+                // event.preventDefault(); // Remove this if the <a> tag has the href
                 const storeId = event.target.dataset.storeId;
-                const storeName = storesData.find(s => s.id == storeId)?.name || 'Mystery Merchant';
-                console.log(`Giggle activated for store ID: ${storeId} (${storeName})`);
-                alert(`You're about to snag a deal from ${storeName}! Prepare for potential side-splitting savings! (Actual redirection not implemented, this is just for laughs)`);
+                const store = storesData.find(s => s.id == storeId);
+
+                if (store) {
+                    console.log(`User clicked on ${store.name} (ID: ${storeId}). Redirecting to: ${store.officialUrl}`);
+                    // The <a> tag's href will handle the actual redirection.
+                    // You might add tracking logic here in a real app before the user leaves your site.
+                }
             });
         });
+        */
     }
 
     renderStores(storesData);
@@ -123,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
-            const filterCategory = button.dataset.filter; // Use data-filter attribute
+            const filterCategory = button.dataset.filter;
             if (filterCategory === 'all') {
                 renderStores(storesData);
             } else {
