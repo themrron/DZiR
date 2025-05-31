@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logon - SynergyBucks™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Use the same style.css for consistency -->
+    <style>
+        body { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+        .login-container {
+            background-color: var(--color-card-bg);
+            padding: 30px 40px;
+            border: 2px solid var(--color-accent-primary);
+            box-shadow: 5px 5px 0px var(--color-accent-primary);
+            width: 90%;
+            max-width: 450px;
+        }
+        .login-container h1 {
+            font-family: var(--font-pixel);
+            color: var(--color-accent-warning);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .login-button {
+            font-family: var(--font-pixel);
+            background-color: var(--color-accent-secondary);
+            color: var(--color-bg-dark);
+            padding: 15px 25px;
+            border: 2px solid var(--color-bg-dark);
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            display: inline-flex; /* For icon alignment */
+            align-items: center;
+            justify-content: center;
+        }
+        .login-button:hover {
+            background-color: var(--color-accent-primary);
+            transform: scale(1.05);
+        }
+        .login-button .google-icon {
+            width: 24px; /* Adjust size as needed */
+            height: 24px;
+            margin-right: 10px;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%20width%3D%2248px%22%20height%3D%2248px%22%3E%3Cpath%20fill%3D%22%23FFC107%22%20d%3D%22M43.611%2C20.083H42V20H24v8h11.303c-1.649%2C4.657-6.08%2C8-11.303%2C8c-6.627%2C0-12-5.373-12-12s5.373-12%2C12-12c3.059%2C0%2C5.842%2C1.154%2C7.961%2C3.039l5.657-5.657C34.046%2C6.053%2C29.268%2C4%2C24%2C4C12.955%2C4%2C4%2C12.955%2C4%2C24s8.955%2C20%2C20%2C20s20-8.955%2C20-20C44%2C22.659%2C43.862%2C21.35%2C43.611%2C20.083z%22%2F%3E%3Cpath%20fill%3D%22%23FF3D00%22%20d%3D%22M6.306%2C14.691l6.571%2C4.819C14.655%2C15.108%2C18.961%2C12%2C24%2C12c3.059%2C0%2C5.842%2C1.154%2C7.961%2C3.039l5.657-5.657C34.046%2C6.053%2C29.268%2C4%2C24%2C4C16.318%2C4%2C9.656%2C8.337%2C6.306%2C14.691z%22%2F%3E%3Cpath%20fill%3D%22%234CAF50%22%20d%3D%22M24%2C44c5.166%2C0%2C9.86-1.977%2C13.409-5.192l-6.19-5.238C29.211%2C35.091%2C26.715%2C36%2C24%2C36c-5.202%2C0-9.619-3.317-11.283-7.946l-6.522%2C5.025C9.505%2C39.556%2C16.227%2C44%2C24%2C44z%22%2F%3E%3Cpath%20fill%3D%22%231976D2%22%20d%3D%22M43.611%2C20.083H42V20H24v8h11.303c-0.792%2C2.237-2.231%2C4.166-4.087%2C5.574l0.012-0.012l6.19%2C5.238C39.991%2C35.638%2C44%2C30.466%2C44%2C24C44%2C22.659%2C43.862%2C21.35%2C43.611%2C20.083z%22%2F%3E%3C%2Fsvg%3E');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        #login-message { margin-top: 20px; color: var(--color-text-dim); font-family: var(--font-crt);}
+        .home-link { margin-top: 30px; font-family: var(--font-mono); }
+    </style>
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="login-container">
+        <h1>SYNERGYBUCKS™ ACCESS PORTAL</h1>
+        <p style="color: var(--color-text-main); margin-bottom: 25px;">Authenticate your operational status to proceed.</p>
+        <button id="google-signin-button" class="login-button">
+            <span class="google-icon"></span>Sign In With Google
+        </button>
+        <p id="login-message"></p>
+        <p class="home-link"><a href="index.html">« Return to Mainframe</a></p>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+    <script src="login.js"></script>
+</body>
+</html>
