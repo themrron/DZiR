@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const storesData = [
         {
             id: 1,
-            name: "Project: GigaMart",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=GMART",
+            name: "Amazon", // Original Name
+            logoUrl: "https://via.placeholder.com/100x50.png?text=Amazon", // Reflects original name
             cashbackAmount: "0.00001%",
             cashbackType: "SynergyUnits™",
             offerDetails: "Mandatory fun procurement zone. Achieve optimal acquisition of miscellaneous consumer goods. Failure is not an option.",
@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 2,
-            name: "Aesthetic Compliance Dept. (Fashion)",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=ACDF",
+            name: "Myntra", // Original Name
+            logoUrl: "https://via.placeholder.com/100x50.png?text=Myntra", // Reflects original name
             cashbackAmount: "Tier 3",
             cashbackType: "ApprovalPoints©",
             offerDetails: "Update your external casing to meet Q3 style mandates. Non-compliance may result in peer disapproval.",
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 3,
-            name: "DataStream Bazaar",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=DSB",
+            name: "Flipkart", // Original Name
+            logoUrl: "https://via.placeholder.com/100x50.png?text=Flipkart", // Reflects original name
             cashbackAmount: "404",
             cashbackType: "ErrorBucks (redeemable for more errors)",
             offerDetails: "Your one-stop-shop for digital artifacts and silicon-based lifeforms. Warning: may contain glitches.",
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 4,
-            name: "Apparel Enhancement Initiative",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=AEI",
+            name: "AJIO", // Original Name
+            logoUrl: "https://via.placeholder.com/100x50.png?text=AJIO", // Reflects original name
             cashbackAmount: "CLASSIFIED",
             cashbackType: "StealthSavings™",
             offerDetails: "Procure designated sartorial upgrades. Blend in. Or stand out. Your choice, operative (results may vary).",
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 5,
-            name: "Nutrient Disbursement Unit",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=NDU",
+            name: "Swiggy", // Original Name
+            logoUrl: "https://via.placeholder.com/100x50.png?text=Swiggy", // Reflects original name
             cashbackAmount: "MAX_INT",
             cashbackType: "CalorieCredits®",
             offerDetails: "Automated delivery of vital sustenance. Ensure peak operational efficiency. Do not operate heavy machinery post-ingestion.",
@@ -54,14 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            name: "Culinary Distribution Network",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=CDN",
+            name: "Zomato", // Original Name
+            logoUrl: "https://via.placeholder.com/100x50.png?text=Zomato", // Reflects original name
             cashbackAmount: "OVER 9000!",
             cashbackType: "FlavorStamps™",
             offerDetails: "Access a wide array of pre-processed nutrition solutions. Warning: May induce sudden desire for naps.",
             category: "food",
             officialUrl: "https://www.zomato.com"
         }
+        // Add more stores with original names as needed
     ];
 
     function renderStores(storesToRender) {
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         storesToRender.forEach((store, index) => {
+            // The <h3> will now display the original store name
             const storeCard = `
                 <article class="store-card" style="--card-index: ${index};" data-category="${store.category.toLowerCase()}">
                     <img src="${store.logoUrl}" alt="${store.name} Logo" class="logo-img">
