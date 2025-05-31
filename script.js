@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loa
         {
             id: 1,
             name: "Amazon",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=Amazon",
+            logoUrl: "amazon_logo.png?text=Amazon",
             cashbackAmount: "0.00001%",
             cashbackType: "SynergyUnits™",
             offerDetails: "Mandatory fun procurement zone. Achieve optimal acquisition of miscellaneous consumer goods. Failure is not an option.",
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure DOM is fully loa
         {
             id: 3,
             name: "Flipkart",
-            logoUrl: "https://via.placeholder.com/100x50.png?text=Flipkart",
+            logoUrl: "Flipkart-Emblema.png?text=Flipkart",
             cashbackAmount: "404",
             cashbackType: "ErrorBucks (redeemable for more errors)",
             offerDetails: "Your one-stop-shop for digital artifacts and silicon-based lifeforms. Warning: may contain glitches.",
