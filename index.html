@@ -19,13 +19,18 @@
             </div>
             <nav>
                 <input type="search" placeholder="Search for MAXIMUM ROI on JOY...">
-                <a href="#" class="nav-button">Logon Portal <span class="icon">🔑</span></a>
-                <a href="#" class="nav-button">Enlist Now! <span class="icon">🚀</span></a>
+                <!-- Login/Logout Button Area -->
+                <div id="auth-container">
+                    <a href="login.html" class="nav-button" id="login-button">Logon Portal <span class="icon">🔑</span></a>
+                    <span id="user-greeting" style="display:none; color: var(--color-accent-warning); margin-right:10px;"></span>
+                    <button class="nav-button" id="logout-button" style="display:none;">Logout <span class="icon">🛑</span></button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container">
+        <!-- ... (rest of your main content: marquee, breadcrumbs, h1, filters, store-grid, pagination) ... -->
         <section class="marquee-container">
             <div class="marquee-text">
                 <span>!!! ATTENTION VALUED CONSUMER UNIT !!!</span>
@@ -63,6 +68,7 @@
     </main>
 
     <footer>
+        <!-- ... (footer content) ... -->
         <div class="container">
             <p>© 1984-2077 SynergyBucks™ Holdings International LLC GmbH S.A. de C.V. All rights hyper-reserved.</p>
             <p>Unauthorized jocularity may be monitored for quality assurance. We take fun VERY seriously.</p>
@@ -73,6 +79,10 @@
             </p>
         </div>
     </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
     <script src="script.js"></script>
 </body>
