@@ -4,83 +4,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const storesData = [
         {
             id: 1,
-            name: "Amazin' Deals",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=Amazin'",
-            cashbackAmount: "Up to 0.001%",
-            cashbackType: "Bitcoin (maybe)",
-            offerDetails: "So many boxes, you'll think it's Christmas every day. Probably just socks.",
+            name: "Project: GigaMart",
+            logoUrl: "https://via.placeholder.com/100x50.png?text=GMART",
+            cashbackAmount: "0.00001%",
+            cashbackType: "SynergyUnits™",
+            offerDetails: "Mandatory fun procurement zone. Achieve optimal acquisition of miscellaneous consumer goods. Failure is not an option.",
             category: "electronics",
-            officialUrl: "https://www.amazon.com" // Example official URL
+            officialUrl: "https://www.amazon.com"
         },
         {
             id: 2,
-            name: "Myntrax Fashion Vortex",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=Myntrax",
-            cashbackAmount: "Flat π%",
-            cashbackType: "Existential Rewards",
-            offerDetails: "Dress like you're famous, even if only your cat notices. She's judging, btw.",
+            name: "Aesthetic Compliance Dept. (Fashion)",
+            logoUrl: "https://via.placeholder.com/100x50.png?text=ACDF",
+            cashbackAmount: "Tier 3",
+            cashbackType: "ApprovalPoints©",
+            offerDetails: "Update your external casing to meet Q3 style mandates. Non-compliance may result in peer disapproval.",
             category: "fashion",
-            officialUrl: "https://www.myntra.com" // Example official URL
+            officialUrl: "https://www.myntra.com"
         },
         {
             id: 3,
-            name: "FlipFlopKart",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=FlipFlop",
-            cashbackAmount: "Up to 42%",
-            cashbackType: "Cosmic Chuckles",
-            offerDetails: "Deals so good, they're almost suspicious. Is this a dream? Pinch yourself.",
+            name: "DataStream Bazaar",
+            logoUrl: "https://via.placeholder.com/100x50.png?text=DSB",
+            cashbackAmount: "404",
+            cashbackType: "ErrorBucks (redeemable for more errors)",
+            offerDetails: "Your one-stop-shop for digital artifacts and silicon-based lifeforms. Warning: may contain glitches.",
             category: "electronics",
-            officialUrl: "https://www.flipkart.com" // Example official URL
+            officialUrl: "https://www.flipkart.com"
         },
         {
             id: 4,
-            name: "AJIO-MG!",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=AJIO-MG",
-            cashbackAmount: "Flat ₹LOL",
-            cashbackType: "GiggleCash",
-            offerDetails: "Be the trend, or at least try not to trip over it. We believe in you!",
+            name: "Apparel Enhancement Initiative",
+            logoUrl: "https://via.placeholder.com/100x50.png?text=AEI",
+            cashbackAmount: "CLASSIFIED",
+            cashbackType: "StealthSavings™",
+            offerDetails: "Procure designated sartorial upgrades. Blend in. Or stand out. Your choice, operative (results may vary).",
             category: "fashion",
-            officialUrl: "https://www.ajio.com" // Example official URL
+            officialUrl: "https://www.ajio.com"
         },
         {
             id: 5,
-            name: "Swiggylicious Noms",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=SwiggyFood",
-            cashbackAmount: "Up to ∞%",
-            cashbackType: "Food Coma Points",
-            offerDetails: "Food that makes you go 'Mmm... and also, where's my TV remote?'",
+            name: "Nutrient Disbursement Unit",
+            logoUrl: "https://via.placeholder.com/100x50.png?text=NDU",
+            cashbackAmount: "MAX_INT",
+            cashbackType: "CalorieCredits®",
+            offerDetails: "Automated delivery of vital sustenance. Ensure peak operational efficiency. Do not operate heavy machinery post-ingestion.",
             category: "food",
-            officialUrl: "https://www.swiggy.com" // Example official URL
+            officialUrl: "https://www.swiggy.com"
         },
         {
             id: 6,
-            name: "Zomato-pocalypse",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=ZomatoEat",
-            cashbackAmount: "A Gazillion",
-            cashbackType: "Belly Rubs",
-            offerDetails: "So many choices, you'll forget what you were hungry for. Just pick one!",
+            name: "Culinary Distribution Network",
+            logoUrl: "https://via.placeholder.com/100x50.png?text=CDN",
+            cashbackAmount: "OVER 9000!",
+            cashbackType: "FlavorStamps™",
+            offerDetails: "Access a wide array of pre-processed nutrition solutions. Warning: May induce sudden desire for naps.",
             category: "food",
-            officialUrl: "https://www.zomato.com" // Example official URL
-        },
-        {
-            id: 7,
-            name: "Gadget Glitch Emporium",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=Gadgets",
-            cashbackAmount: "Error 404%",
-            cashbackType: "Not Found",
-            offerDetails: "Shiny things that beep and boop. May or may not improve your life.",
-            category: "electronics",
-            officialUrl: "https://www.bestbuy.com" // Example for a generic gadget store
-        },
-        {
-            id: 8,
-            name: "Threadbare Comedy Club",
-            logoUrl: "https://via.placeholder.com/130x70.png?text=Threads",
-            cashbackAmount: "10 Jokes Off",
-            cashbackType: "Laugh Tracks",
-            offerDetails: "Wearable punchlines and comedic couture. Warning: May cause spontaneous giggling.",
-            category: "fashion",
-            officialUrl: "https://www.asos.com" // Example for a generic fashion store
+            officialUrl: "https://www.zomato.com"
         }
     ];
 
@@ -88,55 +68,30 @@ document.addEventListener('DOMContentLoaded', () => {
         storeGrid.innerHTML = ''; // Clear existing stores
         if (storesToRender.length === 0) {
             storeGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background-color: var(--card-bg); border-radius: 10px; border: 1px solid var(--accent-magenta);">
-                    <h3 style="color: var(--accent-magenta); font-family: var(--heading-font);">No Chuckles Here!</h3>
-                    <p style="color: var(--text-muted);">Looks like the comedy well is dry for this category. Try another filter, funny pants!</p>
-                    <img src="https://via.placeholder.com/100x100.png?text=Sad+Clown" alt="Sad Clown" style="margin-top: 20px; border-radius: 50%; filter: grayscale(1);">
+                <div style="grid-column: 1 / -1; text-align: center; padding: 30px 15px; background-color: var(--color-card-bg); border: 2px dashed var(--color-accent-warning); color: var(--color-accent-warning);">
+                    <h3 style="font-family: var(--font-pixel); color: var(--color-accent-warning);">!!! ALERT: NO SYNERGY DETECTED !!!</h3>
+                    <p style="color: var(--color-text-dim); font-family: var(--font-crt);">Data retrieval for this sector yielded ZERO results. Re-calibrate search parameters, operative!</p>
+                    <p style="font-size: 2em; margin-top: 10px;">:(</p>
                 </div>`;
             return;
         }
-        storesToRender.forEach(store => {
+        storesToRender.forEach((store, index) => {
             const storeCard = `
-                <article class="store-card" data-category="${store.category.toLowerCase()}">
+                <article class="store-card" style="--card-index: ${index};" data-category="${store.category.toLowerCase()}">
                     <img src="${store.logoUrl}" alt="${store.name} Logo" class="logo-img">
-                    <div>
-                        <h3>${store.name}</h3>
-                        <div class="cashback-info">
-                            ${store.cashbackAmount} <span class="type">${store.cashbackType}</span>
-                        </div>
-                        <p class="offer-details">${store.offerDetails}</p>
+                    <h3>${store.name}</h3>
+                    <div class="cashback-info">
+                        ${store.cashbackAmount} <span class="type">${store.cashbackType}</span>
                     </div>
-                    <a href="${store.officialUrl}" class="action-button" data-store-id="${store.id}" target="_blank" rel="noopener noreferrer">Grab the Giggle & Get Paid!</a>
+                    <p class="offer-details">${store.offerDetails}</p>
+                    <a href="${store.officialUrl}" class="action-button" data-store-id="${store.id}" target="_blank" rel="noopener noreferrer">ENGAGE PROTOCOL »</a>
                 </article>
             `;
-            // Note: We added target="_blank" and rel="noopener noreferrer" to the <a> tag directly.
-            // The JS event listener for alert can be removed or modified if needed for other tracking.
             storeGrid.innerHTML += storeCard;
         });
-
-        // Optional: If you still want to do something BEFORE redirecting (like logging)
-        // you can keep the event listener, but ensure it doesn't preventDefault() if
-        // the link itself is handling the redirect. For simplicity, direct link is fine.
-        // If you keep the listener, it might look like this:
-
-        /*
-        document.querySelectorAll('.action-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                // event.preventDefault(); // Remove this if the <a> tag has the href
-                const storeId = event.target.dataset.storeId;
-                const store = storesData.find(s => s.id == storeId);
-
-                if (store) {
-                    console.log(`User clicked on ${store.name} (ID: ${storeId}). Redirecting to: ${store.officialUrl}`);
-                    // The <a> tag's href will handle the actual redirection.
-                    // You might add tracking logic here in a real app before the user leaves your site.
-                }
-            });
-        });
-        */
     }
 
-    renderStores(storesData);
+    renderStores(storesData); // Initial render
 
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
